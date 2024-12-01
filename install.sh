@@ -44,13 +44,16 @@ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /mnt/gentoo
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 
 # Download make conf and packages configs
-# Will be added later
-# wget
+wget https://github.com/Gailoks/GLmox/archive/refs/heads/main.zip
+unzip main.zip
+cp GLmox-main/setup..sh setup.sh
+chmod +x setup.sh
 
 # Setup time zone
-echo Select a time zone
+echo Select a time zone:
 echo $(ls usr/share/zoneinfo)
 read region
+echo Now select country:
 echo $(ls usr/share/zoneinfo/$region)
 read country
 ln -sf usr/share/zoneinfo/$region/$country etc/localtime
@@ -61,5 +64,7 @@ genfstab -U /mnt/gentoo > etc/fstab
 # Setup locales
 echo en_US.UTF-8 UTF-8 >> etc/locale.gen
 
+echo 'Now you will chroot into new environment
+Execute setup.sh'
 #chroot into new environment
 arch-chroot /mnt/gentoo
