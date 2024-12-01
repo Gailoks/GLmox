@@ -7,20 +7,22 @@ It will setup gentoo to use kvm/qemu and lxc containers also supporting backups
 * Internet connection also required
 
 **Installation**
-    **Arch**
-    ```bash
-    pacman -Sy wget unzip tar
-    wget https://github.com/Gailoks/GLmox/archive/refs/heads/main.zip
-    unzip main.zip
-    cp GLmox-main/install.sh install.sh
-    chmod +x install.sh
-    ./install.sh 
-    ```
-    **Gentoo**
-    ```bash
-    wget https://github.com/Gailoks/GLmox/archive/refs/heads/main.zip
-    unzip main.zip
-    cp GLmox-main/install.sh install.sh
-    chmod +x install.sh
-    ./install.sh 
-    ```
+
+ **Arch live cd**
+ ```bash
+ pacman -Sy wget unzip tar
+ wget https://github.com/Gailoks/GLmox/archive/refs/heads/main.zip
+ unzip main.zip
+ cp GLmox-main/install.sh install.sh
+ chmod +x install.sh
+ ./install.sh 
+ ```
+    
+ **Gentoo live cd**
+ ```bash
+ wget https://github.com/Gailoks/GLmox/archive/refs/heads/main.zip
+ unzip main.zip
+ cp GLmox-main/install.sh install.sh
+ chmod +x install.sh
+ ./install.sh 
+ ```
