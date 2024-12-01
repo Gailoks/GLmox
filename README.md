@@ -3,7 +3,7 @@ It will setup gentoo to use kvm/qemu and lxc containers also supporting backups
 
 **Pre-requirements**
 * You must have gentoo/arch liveCD 
-* You must have at list 16G of space
+* You must have at least 16G of space
 * Internet connection also required
 
 **Installation**
