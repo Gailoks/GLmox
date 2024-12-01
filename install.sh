@@ -39,7 +39,8 @@ mkdir /mnt/gentoo/efi
 mount /dev/$disk\1 /mnt/gentoo/efi
 
 # Download make conf and packages configs
-cp GLmox-main/setup.sh /mnt/gentoo/setup.sh
+cp -r GLmox-main /mnt/gentoo
+mv /mnt/gentoo/GLmox-main/setup.sh /mnt/gentoo/setup.sh 
 chmod +x /mnt/gentoo/setup.sh
 
 # Download stage3 file [systemd, without desktop environment]
