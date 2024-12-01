@@ -29,8 +29,10 @@ mkfs.vfat -F 32 /dev/$disk\1
 mkfs.ext4 /dev/$disk\2
 
 # Mount disks
-if [ !-d "/mnt/gentoo" ]; then
-    mkdir /mnt/gentoo
+if [ -d "/mnt/gentoo" ]; then
+echo ok
+else
+mkdir /mnt/gentoo
 fi
 mount /dev/$disk\2 /mnt/gentoo
 mkdir /mnt/gentoo/efi
@@ -47,8 +49,8 @@ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /mnt/gentoo
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 
 # Download make conf and packages configs
-cp GLmox-main/setup.sh setup.sh
-chmod +x setup.sh
+cp GLmox-main/setup.sh /mnt/gentoo/setup.sh
+chmod +x /mnt/gentoo/setup.sh
 
 # Setup time zone
 echo Select a time zone:
