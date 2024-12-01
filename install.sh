@@ -1,12 +1,6 @@
 #!/bin/bash
 
 # Assuming that you already have internet connection
-echo "Are you using Arch live CD? [N,y]"
-read isArch
-if [ "$isArch" = "y" ]; then
-    mkdir /mnt/gentoo
-fi
-
 
 echo "select a disk for gentoo installation
 (it will use 16GB of space)
@@ -35,6 +29,9 @@ mkfs.vfat -F 32 /dev/$disk\1
 mkfs.ext4 /dev/$disk\2
 
 # Mount disks
+if [ !-d "/mnt/gentoo" ]; then
+    mkdir /mnt/gentoo
+fi
 mount /dev/$disk\2 /mnt/gentoo
 mkdir /mnt/gentoo/efi
 mount /dev/$disk\1 /mnt/gentoo/efi
