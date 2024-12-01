@@ -49,9 +49,9 @@ cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 
 # Setup time zone
 echo Select a time zone
-echo (ls  -l user/share/zoneinfo)
+echo $(ls  -l user/share/zoneinfo)
 read region
-echo (ls -l user/share/zoneinfo/$region)
+echo $(ls -l user/share/zoneinfo/$region)
 read country
 ln -sf usr/share/zoneinfo/$region/$country /etc/localtime
 
