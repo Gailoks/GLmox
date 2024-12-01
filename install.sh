@@ -1,6 +1,12 @@
 #!/bin/bash
 
 # Assuming that you already have internet connection
+echo "Are you using Arch live CD? [N,y]"
+read isArch
+if [ "$isArch" = "y" ]; then
+    mkdir /mnt/gentoo
+fi
+
 
 echo "select a disk for gentoo installation
 (it will use 16GB of space)
@@ -44,19 +50,17 @@ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /mnt/gentoo
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 
 # Download make conf and packages configs
-wget https://github.com/Gailoks/GLmox/archive/refs/heads/main.zip
-unzip main.zip
-cp GLmox-main/setup..sh setup.sh
+cp GLmox-main/setup.sh setup.sh
 chmod +x setup.sh
 
 # Setup time zone
 echo Select a time zone:
-echo $(ls user/share/zoneinfo)
+echo $(ls usr/share/zoneinfo)
 read region
 echo Now select country:
-echo $(ls user/share/zoneinfo/$region)
+echo $(ls usr/share/zoneinfo/$region)
 read country
-ln -sf user/share/zoneinfo/$region/$country etc/localtime
+ln -sf usr/share/zoneinfo/$region/$country etc/localtime
 
 # Gen fstab file
 genfstab -U /mnt/gentoo > etc/fstab
