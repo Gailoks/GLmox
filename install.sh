@@ -51,12 +51,12 @@ chmod +x setup.sh
 
 # Setup time zone
 echo Select a time zone:
-echo $(ls usr/share/zoneinfo)
+echo $(ls user/share/zoneinfo)
 read region
 echo Now select country:
-echo $(ls usr/share/zoneinfo/$region)
+echo $(ls user/share/zoneinfo/$region)
 read country
-ln -sf usr/share/zoneinfo/$region/$country etc/localtime
+ln -sf user/share/zoneinfo/$region/$country etc/localtime
 
 # Gen fstab file
 genfstab -U /mnt/gentoo > etc/fstab
