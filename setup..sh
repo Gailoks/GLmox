@@ -31,11 +31,11 @@ mkfs.ext4 /dev/$disk\2
 # Mount disks
 mount /dev/$disk\2 /mnt/gentoo
 mkdir /mnt/gentoo/efi
-mount /dev/$disk\2 /mnt/gentoo/efi
+mount /dev/$disk\1 /mnt/gentoo/efi
 
-# Download stage3 file
+# Download stage3 file [systemd, without desktop environment]
 cd  /mnt/gentoo
-wget  https://distfiles.gentoo.org/releases/amd64/autobuilds/20241124T163746Z/stage3-amd64-desktop-systemd-20241124T163746Z.tar.xz
+wget  https://distfiles.gentoo.org/releases/amd64/autobuilds/20241124T163746Z/stage3-amd64-systemd-20241124T163746Z.tar.xz
 
 # Unpack stage file
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /mnt/gentoo
@@ -49,9 +49,9 @@ cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 
 # Setup time zone
 echo Select a time zone
-echo $(ls  -l usr/share/zoneinfo)
+echo $(ls usr/share/zoneinfo)
 read region
-echo $(ls -l usr/share/zoneinfo/$region)
+echo $(ls usr/share/zoneinfo/$region)
 read country
 ln -sf usr/share/zoneinfo/$region/$country etc/localtime
 
@@ -61,5 +61,5 @@ genfstab -U /mnt/gentoo > etc/fstab
 # Setup locales
 echo en_US.UTF-8 UTF-8 >> etc/locale.gen
 
-# Grub setup
-grub-install --efi-directory=/efi
+#chroot into new environment
+arch-chroot /mnt/gentoo
