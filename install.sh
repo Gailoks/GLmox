@@ -38,6 +38,10 @@ mount /dev/$disk\2 /mnt/gentoo
 mkdir /mnt/gentoo/efi
 mount /dev/$disk\1 /mnt/gentoo/efi
 
+# Download make conf and packages configs
+cp GLmox-main/setup.sh /mnt/gentoo/setup.sh
+chmod +x /mnt/gentoo/setup.sh
+
 # Download stage3 file [systemd, without desktop environment]
 cd  /mnt/gentoo
 wget  https://distfiles.gentoo.org/releases/amd64/autobuilds/20241124T163746Z/stage3-amd64-systemd-20241124T163746Z.tar.xz
@@ -47,10 +51,6 @@ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /mnt/gentoo
 
 # Setup network on a gentoo
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
-
-# Download make conf and packages configs
-cp GLmox-main/setup.sh /mnt/gentoo/setup.sh
-chmod +x /mnt/gentoo/setup.sh
 
 # Setup time zone
 echo Select a time zone:
