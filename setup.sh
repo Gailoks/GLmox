@@ -25,7 +25,7 @@ cp -r GLmox/package.use /etc/portage/
 echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
 
 # Compile for a server architecture
-sed 's/-O2/-march=native -O2/g' /etc/portage/make.conf > /etc/portage/make.conf
+echo $(sed 's/-O2/-march=native -O2/g' /etc/portage/make.conf) > /etc/portage/make.conf
 
 # Set grub arch
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
