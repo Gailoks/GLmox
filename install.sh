@@ -45,7 +45,7 @@ chmod +x /mnt/gentoo/setup.sh
 
 # Download stage3 file [systemd, without desktop environment]
 cd  /mnt/gentoo
-wget  https://distfiles.gentoo.org/releases/amd64/autobuilds/20241124T163746Z/stage3-amd64-systemd-20241124T163746Z.tar.xz
+wget  https://distfiles.gentoo.org/releases/amd64/autobuilds/20241201T164824Z/stage3-amd64-llvm-systemd-20241201T164824Z.tar.xz
 
 # Unpack stage file
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /mnt/gentoo
